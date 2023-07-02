@@ -20,9 +20,9 @@ export const ShopMain = ({ setCurrentPage, setShopProduct, shopProduct, currentP
   const [totalPages, setTotalPages] = useState<number>(1);
   const [selectedSortOption, setSelectedSortOption] = useState<string>('featured');
   const [topBtnIsActive, setTopBtnIsActive] = useState<number>(0);
-  const [totalProducts, setTotalProducts] = useState<IProduct[]>([])
-  const [filterDrawerActive, setFilterDrawerActive] = useState<boolean>(false)
-  const { data, error } = useGetProductsQuery({})
+  const [totalProducts, setTotalProducts] = useState<IProduct[]>([]);
+  const [filterDrawerActive, setFilterDrawerActive] = useState<boolean>(false);
+  const { data, error } = useGetProductsQuery({});
 
   useEffect(() => {
     if (data) {
