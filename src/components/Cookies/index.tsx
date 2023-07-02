@@ -21,7 +21,7 @@ export const Cookies:React.FC = () => {
         },
     };
     const storageType = cookieStorage;
-    const shouldShowPopup = (storage: ICookies) => !storageType.getItem(consentPropertyName);
+    const shouldShowPopup = () => !storageType.getItem(consentPropertyName);
     const saveToStorage = (consentPropertyName: string) => storageType.setItem(consentPropertyName, 'true');
     const declineToStorage = (consentPropertyName: string) => storageType.setItem(consentPropertyName, 'false');
     const acceptFn = () => {
@@ -32,7 +32,7 @@ export const Cookies:React.FC = () => {
         declineToStorage(consentPropertyName);
         setHidden(true)
     }
-    if (shouldShowPopup(storageType)) {
+    if (shouldShowPopup()) {
         setTimeout(() => {
             setHidden(false)
         }, 2000);
