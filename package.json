@@ -1,12 +1,12 @@
 {
   "name": "shop",
-  "private": false,
+  "private": "false",
   "version": "0.0.0",
-  "homepage": "https://journey29.github.io/online-store-furniture",
+  "homepage": "http://journey29.github.io/online-store-furniture",
   "type": "module",
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "predeploy":"npm run build",
+    "deploy":"gh-pages -d build",
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
@@ -26,16 +26,15 @@
     "react-modal-video": "^2.0.0",
     "react-redux": "^8.0.7",
     "react-router-dom": "^6.11.2",
-    "redux-persist": "^6.0.0",
-    "swiper": "^9.4.1"
+    "redux-persist": "^6.0.0"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.195",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@types/react-modal-video": "^1.2.0",
-    "@types/react-router-dom": "^5.3.3",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "@types/lodash": "^4.14.195",
+    "@types/react-router-dom": "^5.3.3",
     "@typescript-eslint/parser": "^5.57.1",
     "@vitejs/plugin-react": "^4.0.0",
     "eslint": "^8.38.0",
