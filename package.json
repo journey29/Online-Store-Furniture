@@ -1,7 +1,7 @@
 {
   "name": "shop",
-  "private": "false",
-  "version": "0.0.0",
+  "private": true,
+  "version": "0.1.0",
   "homepage": "http://journey29.github.io/online-store-furniture",
   "type": "module",
   "scripts": {
