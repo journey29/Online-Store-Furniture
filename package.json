@@ -1,12 +1,9 @@
 {
   "name": "shop",
-  "private": false,
+  "private": "true",
   "version": "0.1.0",
-  "homepage": "http://journey29.github.io/online-store-furniture",
   "type": "module",
   "scripts": {
-    "predeploy":"npm run build",
-    "deploy":"gh-pages -d build",
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
