@@ -17,7 +17,7 @@ export const Account:React.FC = () => {
     const dispatch = useAppDispatch()
     const logOut = async () => {
         const auth = getAuth()
-        await signOut(auth).then(() => console.log('true'))
+        await signOut(auth).then(() => console.log('logout successfull'))
         dispatch(setUser({
             isAuth: false
         }))

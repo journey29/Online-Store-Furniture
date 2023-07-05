@@ -25,16 +25,11 @@ export const Login: React.FC = () => {
                 dispatch(setUser({
                     email: user.email,
                     id: user.uid,
-                    token: user.refreshToken,
                     isAuth: true
                 }))
-                navigate('/account')
-                
-                
+                navigate('/account') 
             }).catch(error => {
                 setError(error.code)
-                console.log(error.code);
-                
             })
     }
     return (

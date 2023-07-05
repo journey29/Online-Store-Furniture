@@ -643,8 +643,8 @@ body {
       font-size: 30px;
     }
     @media(max-width:430px){
-      font-size: 24px;
-      line-height: 32px;
+      font-size: 28px;
+      line-height: 36px;
     }
   }
   &__info {
@@ -4388,7 +4388,11 @@ body {
   &__article-title {
     margin-bottom: 25px;
     font-size: 38px;
+    line-height: 36px;
     font-weight: 600;
+    @media(max-width: 450px){
+      font-size: 33px;
+    }
   }
   &__article-text {
     margin-bottom: 30px;

@@ -24,7 +24,6 @@ export function SignUp() {
                 dispatch(setUser({
                     email: user.email,
                     id: user.uid,
-                    token: user.refreshToken,
                     isAuth: false
                 }));
                 navigate('/login')
