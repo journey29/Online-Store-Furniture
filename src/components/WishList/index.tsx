@@ -27,8 +27,7 @@ export const WishList: React.FC = () => {
                         </thead>
                         <tbody className='wishlist__items-list'>
                             {wishListItems.map(item =>
-                                <div key={item.title}>
-                                    <tr className='wishlist__item'>
+                                    <tr className='wishlist__item' key={item.title}>
                                         <td className='wishlist__item-column'>
                                             <img className='wishlist__item-img' src={item.img} alt="img" />
                                         </td>
@@ -47,7 +46,6 @@ export const WishList: React.FC = () => {
                                             </button>
                                         </td>
                                     </tr>
-                                </div>
                             )}
                         </tbody>
                     </table>

@@ -20,10 +20,6 @@ const wishlistSlice = createSlice({
             price: action.payload.price,
             added: action.payload.added
         };
-
-        console.log(123);
-        
-
         const repeatedItem = state.wishListItems.some(item => item.title === action.payload.title);
         if (!repeatedItem) {
             state.wishListItems.push(newItem)
