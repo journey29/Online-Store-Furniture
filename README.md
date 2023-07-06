@@ -5,9 +5,9 @@ Furni is an online furniture store.
 The project provides a convenient way to shop online, allowing customers to browse, select and order products from the comfort of their homes. The shopping process at an online furniture store usually starts with creating an account or logging into an existing account. Customers have the opportunity to browse a wide range of furniture which includes sofas, tables, chairs and many more. Each product is usually accompanied by photos, description, specifications and price.
 
 Users can easily browse the site and find the products they need using filter and search functions. After selecting a product, the customer can add it to the cart and continue shopping. When they're done selecting products, they can proceed to checkout. 
-To develop this project, I used the design from the themeforest website. 
 
-The development was completely entrusted to me (frontend and backend).
+
+To develop this project, I used the design from the themeforest website.The development was completely entrusted to me (frontend and backend).
 
 
 ### You can see a small overview of the website below:
