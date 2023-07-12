@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import {IProduct } from "../types/types";
+import {IProduct } from "types/types";
 
 interface HeaderState {
   filteredItems: IProduct[];
