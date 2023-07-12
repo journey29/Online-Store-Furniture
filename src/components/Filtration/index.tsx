@@ -1,13 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSearch, faArrowRight } from "@fortawesome/free-solid-svg-icons"
-import { useAppDispatch, useAppSelector } from "../../hooks/redux"
-import { IProduct } from "../../types/types"
+import { useAppDispatch, useAppSelector } from "hooks/redux"
+import { IProduct } from "types/types"
 import { ChangeEvent, useState, useCallback  } from 'react'
 import { useNavigate } from "react-router-dom"
-import { useGetProductsQuery } from "../../store/api/products.api"
+import { useGetProductsQuery } from "store/api/products.api"
 import { debounce } from 'lodash'
 import { Link } from "react-router-dom"
-import { setFilterInput, setFilteredItems } from "../../store/headerSlice"
+import { setFilterInput, setFilteredItems } from "store/slices/headerSlice"
 type Props = {
     products: IProduct[],
     setProducts: (state: IProduct[]) => void

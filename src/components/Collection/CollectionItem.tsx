@@ -1,24 +1,24 @@
 import { useState } from 'react';
-import { ICart, IProduct, IWishItem } from '../../types/types';
-import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import {  setCartItems } from "../../store/cartSlice";
-import { setWishListItems} from "../../store/wishlistSlice";
+import { ICart, IProduct, IWishItem } from 'types/types';
+import { useAppDispatch, useAppSelector } from 'hooks/redux';
+import { setCartItems } from "store/slices/cartSlice";
+import { setWishListItems } from "store/slices/wishlistSlice";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faHeart, faEye } from '@fortawesome/free-solid-svg-icons';
-import EmptyHeart from '../../assets/icons/empty-heart.svg';
-import EmptyCart from '../../assets/icons/empty-cart.svg';
-import { ProductPopup } from '../ProductPopup';
+import EmptyHeart from 'assets/icons/empty-heart.svg';
+import EmptyCart from 'assets/icons/empty-cart.svg';
+import { ProductPopup } from 'components/ProductPopup';
 
 type Props = {
     item: IProduct;
 };
 
-export const CollectionItem = ({ item }: Props) => {
+export const CollectionItem:React.FC<Props> = ({ item }) => {
     const { cartItems } = useAppSelector(state => state.cart);
     const { wishListItems } = useAppSelector(state => state.wishlist);
     const dispatch = useAppDispatch();
     const setItemsInCart = (state: ICart) => dispatch(setCartItems(state));
-    const setItemsInWishlist = (state:IWishItem)=>dispatch(setWishListItems(state))
+    const setItemsInWishlist = (state: IWishItem) => dispatch(setWishListItems(state))
     const [isActive, setIsActive] = useState<boolean>(false);
 
     return (
@@ -30,14 +30,14 @@ export const CollectionItem = ({ item }: Props) => {
                     <p className="collection__item-price">${item.price}.00</p>
                 </div>
                 <div className="collection__item-buttons">
-                    <button className="collection__item-btn" onClick={() => setItemsInCart({title:item.title, img: item.imageUrl, price:item.price, inputValue:1})}>
+                    <button className="collection__item-btn" onClick={() => setItemsInCart({ title: item.title, img: item.imageUrl, price: item.price, inputValue: 1, info: item.info })}>
                         {cartItems.some((cartItem: ICart) => cartItem.title === item.title) ? (
                             <FontAwesomeIcon style={{ width: "20px", height: "20px" }} className="collection__btn-img" icon={faCartShopping} />
                         ) : (
                             <img className="collection__btn-img" src={EmptyCart} alt="icon" />
                         )}
                     </button>
-                    <button className="collection__item-btn" onClick={() => setItemsInWishlist({title:item.title, img:item.imageUrl, price:item.price, added:true})}>
+                    <button className="collection__item-btn" onClick={() => setItemsInWishlist({ title: item.title, img: item.imageUrl, price: item.price, added: true })}>
                         {wishListItems.some((wishItem: IWishItem) => wishItem.title === item.title) ? (
                             <FontAwesomeIcon style={{ width: "20px", height: "20px" }} className="collection__btn-img" icon={faHeart} />
                         ) : (

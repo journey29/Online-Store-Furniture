@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faFireFlameCurved } from '@fortawesome/free-solid-svg-icons';
-import { IProduct, ICart, IWishItem } from '../../types/types';
+import { IProduct, ICart, IWishItem } from 'types/types';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
-import { getRandomNumber } from '../../utils/getRandomNumber';
-import { generateRandomNumber } from '../../utils/generateRandomNumber';
-import { useAppDispatch } from '../../hooks/redux';
-import { setCartItems} from '../../store/cartSlice';
-import { setWishListItems} from '../../store/wishlistSlice';
+import { getRandomNumber } from 'utils/getRandomNumber';
+import { generateRandomNumber } from 'utils/generateRandomNumber';
+import { useAppDispatch } from 'hooks/redux';
+import { setCartItems} from 'store/slices/cartSlice';
+import { setWishListItems} from 'store/slices/wishlistSlice';
 
 
 type Props = {
@@ -17,7 +17,7 @@ type Props = {
 }
 
 
-export const ProductPopup = ({ setIsActive, isActive, item }: Props) => {
+export const ProductPopup:React.FC<Props> = ({ setIsActive, isActive, item }) => {
     const dispatch = useAppDispatch();
     const setItemsInCart = (state: ICart) => dispatch(setCartItems(state));
     const setItemsInWishlist = (state:IWishItem)=>dispatch(setWishListItems(state))
@@ -120,7 +120,7 @@ export const ProductPopup = ({ setIsActive, isActive, item }: Props) => {
                             </div>
                         </div>
                         <div className='product-popup__info-tabs'>
-                            <button className='product-popup__info-tab' onClick={() => setItemsInCart({title:item.title, price:item.price, img:item.imageUrl, inputValue:1})}>Add to Cart</button>
+                            <button className='product-popup__info-tab' onClick={() => setItemsInCart({title:item.title, price:item.price, img:item.imageUrl, inputValue:1, info:item.info})}>Add to Cart</button>
                             <button className='product-popup__info-tab' onClick={() => setItemsInWishlist({title:item.title, img:item.imageUrl, price:item.price, added:true})}> Add to Wishlist</button>
                         </div>
                         <div className='product-popup__info-viewers'>

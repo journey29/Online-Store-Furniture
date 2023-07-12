@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Sort } from '../Sort';
-import { IProduct} from '../../types/types';
+import { Sort } from 'components/Sort';
+import { IProduct} from 'types/types';
 import { CollectionItem } from './CollectionItem';
 import { useGetLimitProductsQuery} from '../../store/api/products.api';
 
 export const Collection: React.FC = () => {
-  const {data, error} = useGetLimitProductsQuery({limit:'6', page:'1'})
+  const {data, error} = useGetLimitProductsQuery({limit:'6', page:'1'})  
   const [collections, setCollections] = useState<IProduct[]>([]);
 
   useEffect(() => {

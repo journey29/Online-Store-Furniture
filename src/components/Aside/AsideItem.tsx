@@ -1,5 +1,5 @@
-import { bigFirst } from '../../utils/bigFirst';
-import { IAsideItems } from '../../types/types';
+import { bigFirst } from 'utils/bigFirst';
+import { IAsideItems } from 'types/types';
 import AsideItemList from './AsideItemList';
 
 type Props = {
@@ -8,7 +8,7 @@ type Props = {
 }
 
 
-const AsideItem = ({ asideItems, item }: Props) => {
+export const AsideItem:React.FC<Props> = ({ asideItems, item }) => {
     
     return (
         <div className={`sidebar__${item}-item`}>
@@ -19,5 +19,3 @@ const AsideItem = ({ asideItems, item }: Props) => {
         </div>
     )
 }
-
-export default AsideItem

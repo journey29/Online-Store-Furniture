@@ -1,8 +1,8 @@
 import { CartItem } from './CartItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
-import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { setIsActive } from '../../store/cartSlice';
+import { useAppDispatch, useAppSelector } from 'hooks/redux';
+import { setIsActive } from 'store/slices/cartSlice';
 import { Link } from 'react-router-dom';
 
 export const Cart: React.FC = () => {
@@ -19,7 +19,7 @@ export const Cart: React.FC = () => {
                         <h6 className="cart__title">Your Cart</h6>
                         <p className="cart__price-info">Your cart is currently empty.</p>
                         <div className="cart__buttons">
-                            <Link className="cart__shopping-link" to="/shop">Continue Shopping</Link>
+                            <Link className="cart__shopping-link" to="/shop" onClick={()=>setIsActiveHandler(false)}>Continue Shopping</Link>
                         </div>
                     </div>
                 </div>
@@ -34,7 +34,7 @@ export const Cart: React.FC = () => {
                         <h6 className="cart__title">Your Cart</h6>
                         <ul className="cart__items">
                             {cartItems.map(item =>
-                                <CartItem key={item.title} title={item.title} price={item.price} img={item.img} value={item.inputValue} />
+                                <CartItem key={item.title} title={item.title} price={item.price} img={item.img} value={item.inputValue} info={item.info} />
                             )}
                         </ul>
                         <div className="cart__price">
@@ -45,7 +45,7 @@ export const Cart: React.FC = () => {
                             <p className="cart__price-info">Shipping, taxes, and discounts will be calculated at checkout.</p>
                         </div>
                         <div className="cart__buttons">
-                            <Link className="cart__view-link" to="/shopping-cart">View Cart</Link>
+                            <Link className="cart__view-link" to="/shopping-cart" onClick={()=>setIsActiveHandler(false)}>View Cart</Link>
                         </div>
                     </div>
                 </div>

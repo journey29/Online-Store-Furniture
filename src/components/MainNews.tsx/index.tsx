@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
-import { INews } from "../../types/types"
+import { INews } from "types/types"
 import { Link } from "react-router-dom"
-import { useGetLimitNewsQuery } from "../../store/api/products.api"
+import { useGetLimitNewsQuery } from "store/api/products.api"
 
-export const MainNews = () => {
+export const MainNews:React.FC = () => {
     const [news, setNews] = useState<INews[]>([])
     const { data, error } = useGetLimitNewsQuery({ limit: '3', page: '1' })
     useEffect(() => {

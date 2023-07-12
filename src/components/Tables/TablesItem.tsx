@@ -7,7 +7,7 @@ type Props = {
     img:string
 }
 
-const TablesItem = ({caption, title, text, img}: Props) => {
+export const TablesItem = ({caption, title, text, img}: Props) => {
   return (
     <li className="tables__item">
     <img className="tables__item-img" src={img} alt="img" />
@@ -20,5 +20,3 @@ const TablesItem = ({caption, title, text, img}: Props) => {
 </li>
   )
 }
-
-export default TablesItem

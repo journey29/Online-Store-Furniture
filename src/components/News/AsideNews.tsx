@@ -1,8 +1,8 @@
-import { AsideSlider } from "../Aside/AsideSlider"
+import { AsideSlider } from "components/Aside/AsideSlider"
 import { useEffect, useState } from 'react'
-import { INews } from "../../types/types"
+import { INews } from "types/types"
 import { Link } from "react-router-dom"
-import { useGetNewsQuery } from "../../store/api/products.api"
+import { useGetNewsQuery } from "store/api/products.api"
 
 export const AsideNews: React.FC = () => {
     const [recentNews, setRecentNews] = useState<INews[]>([])

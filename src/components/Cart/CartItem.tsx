@@ -1,14 +1,15 @@
-import { useAppDispatch } from '../../hooks/redux';
-import { removeCartItem, setCartItemInputValue } from '../../store/cartSlice';
+import { useAppDispatch } from 'hooks/redux';
+import { removeCartItem, setCartItemInputValue } from 'store/slices/cartSlice';
 
 type Props = {
     title: string,
     img: string,
     price: number,
-    value:number
+    value:number,
+    info:string
 }
 
-export const CartItem: React.FC<Props> = ({ value, title, img, price }) => {
+export const CartItem: React.FC<Props> = ({ value, title, img, price, info }) => {
     const dispatch = useAppDispatch();
     const deleteCartItem = (state: string) => dispatch(removeCartItem(state));
     const changeCartItemInput = (title:string, value:number) => dispatch(setCartItemInputValue({title, value}))
@@ -37,7 +38,7 @@ export const CartItem: React.FC<Props> = ({ value, title, img, price }) => {
         <img className="cart__item-img" src={img} alt="img" />
         <div className="cart__item-info">
           <h6 className="cart__item-title">{title}</h6>
-          <p className="cart__item-properties">Brown / Teak / 106.7 x 50.8 x 73.7</p>
+          <p className="cart__item-properties">{info}</p>
           <p className="cart__item-price">${price * value}.00</p>
           <div className="cart__item-quantity">
             <button className="plus" onClick={plusBtn}>+</button>

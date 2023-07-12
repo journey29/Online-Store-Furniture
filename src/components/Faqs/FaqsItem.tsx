@@ -7,7 +7,7 @@ type Props = {
     text: string
 }
 
-export const FaqsItem = ({ title, text }: Props) => {
+export const FaqsItem:React.FC<Props> = ({ title, text }) => {
     const [isActive, setIsActive] = useState<boolean>(false)
     return (
         <div className={isActive ? 'questions__item active' : 'questions__item'}>

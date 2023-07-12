@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { IProduct, ISort } from '../../types/types';
-import { useGetSortedProductsQuery } from '../../store/api/products.api';
+import { IProduct, ISort } from 'types/types';
+import { useGetSortedProductsQuery } from 'store/api/products.api';
 
 type Props = {
     setCollections(data: IProduct[]): void
@@ -12,7 +12,7 @@ const sort: ISort = {
     "FEATURED": "rating"
 }
 
-export const Sort = ({ setCollections }: Props) => {
+export const Sort:React.FC<Props> = ({ setCollections }) => {
     const [activeSort, setActiveSort] = useState<string>("LATEST"); 
     const {data, error} = useGetSortedProductsQuery({sortBy: sort[activeSort], order:'desc'});
     

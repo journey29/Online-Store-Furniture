@@ -1,11 +1,11 @@
-import { bigFirst } from "../../utils/bigFirst"
+import { bigFirst } from "utils/bigFirst"
 type Props = {
     title: string,
     previousPage?: string,
     currentPage: string | undefined
 }
 
-export const Breadcrumbs = ({ title, currentPage, previousPage }: Props) => {
+export const Breadcrumbs:React.FC<Props> = ({ title, currentPage, previousPage }) => {
     currentPage = currentPage?.replaceAll('-', ' ')
     currentPage = bigFirst(currentPage)
     

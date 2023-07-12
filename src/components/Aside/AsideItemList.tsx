@@ -1,5 +1,5 @@
 import { MouseEvent, useState } from 'react';
-import { IAsideItems } from '../../types/types';
+import { IAsideItems } from 'types/types';
 import { Link } from 'react-router-dom';
 type Props = {
     list: string,
@@ -7,7 +7,7 @@ type Props = {
     item: string
 }
 
-const AsideItemList = ({ list, asideItems, item }: Props) => {
+const AsideItemList:React.FC<Props> = ({ list, asideItems, item }) => {
     const [isContentVisible, setIsContentVisible] = useState<boolean>(false);
     const labelHandler = (e: MouseEvent<HTMLLabelElement>): void => {
         e.preventDefault()

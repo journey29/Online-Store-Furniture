@@ -1,14 +1,15 @@
-import { ICart } from "../../types/types"
-import { useAppDispatch} from '../../hooks/redux';
+import { ICart } from "types/types"
+import { useAppDispatch} from 'hooks/redux';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBucket } from "@fortawesome/free-solid-svg-icons";
-import { setCartItemInputValue, removeCartItem } from "../../store/cartSlice";
+import { setCartItemInputValue, removeCartItem } from "store/slices/cartSlice";
+import React from "react";
 
 type Props = {
   item: ICart
 }
 
-export const ShoppingCartItem = ({ item }: Props) => {
+export const ShoppingCartItem:React.FC<Props>= ({ item }) => {
   const dispatch = useAppDispatch();
   const deleteCartItem = (state: string) => dispatch(removeCartItem(state));
   const changeCartItemInput = (title:string, value:number) => dispatch(setCartItemInputValue({title, value}))

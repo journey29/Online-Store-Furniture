@@ -1,20 +1,20 @@
 import { useState, useEffect,ChangeEvent } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faFireFlameCurved } from '@fortawesome/free-solid-svg-icons';
-import { IProduct, ICart, IWishItem } from '../../types/types';
-import { getRandomNumber } from '../../utils/getRandomNumber';
-import { generateRandomNumber } from '../../utils/generateRandomNumber';
-import { formatDate } from '../../utils/formatDate';
-import { useAppDispatch } from '../../hooks/redux';
-import { setCartItems } from '../../store/cartSlice';
-import { setWishListItems } from '../../store/wishlistSlice';
-import { useChangeProductItemMutation } from '../../store/api/products.api';
+import { IProduct, ICart, IWishItem } from 'types/types';
+import { getRandomNumber } from 'utils/getRandomNumber';
+import { generateRandomNumber } from 'utils/generateRandomNumber';
+import { formatDate } from 'utils/formatDate';
+import { useAppDispatch } from 'hooks/redux';
+import { setCartItems } from 'store/slices/cartSlice';
+import { setWishListItems } from 'store/slices/wishlistSlice';
+import { useChangeProductItemMutation } from 'store/api/products.api';
 
 type Props = {
     product: IProduct[],
 }
 
-export const ProductItem = ({ product}: Props) => {
+export const ProductItem:React.FC<Props> = ({ product}) => {
     const dispatch = useAppDispatch();
     const setItemsInCart = (state: ICart) => dispatch(setCartItems(state));
     const setItemsInWishlist = (state: IWishItem) => dispatch(setWishListItems(state))
@@ -159,7 +159,7 @@ export const ProductItem = ({ product}: Props) => {
                                     </div>
                                 </div>
                                 <div className='product__info-tabs'>
-                                    <button className='product__info-tab' onClick={() => setItemsInCart({ title: item.title, price: item.price, img: item.imageUrl, inputValue: quantity })}>Add to Cart</button>
+                                    <button className='product__info-tab' onClick={() => setItemsInCart({ title: item.title, price: item.price, img: item.imageUrl, info:item.info, inputValue: quantity })}>Add to Cart</button>
                                     <button className='product__info-tab' onClick={() => setItemsInWishlist({ title: item.title, img: item.imageUrl, price: item.price, added: true })}>Add to Wishlist</button>
                                 </div>
                                 <div className='product__info-viewers'>

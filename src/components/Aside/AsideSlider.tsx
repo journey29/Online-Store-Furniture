@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
-import { IProduct } from "../../types/types";
+import { IProduct } from "types/types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-import "../../styles/index.scss";
+import "styles/index.scss";
 import { Navigation } from "swiper";
-import { useGetProductsQuery } from "../../store/api/products.api";
-import { Loader } from "../Loader";
+import { useGetProductsQuery } from "store/api/products.api";
+import { Loader } from "components/Loader";
 
-export const AsideSlider = () => {
+export const AsideSlider:React.FC = () => {
   const [collections, setCollections] = useState<IProduct[]>([]);
   const { data, error, isLoading } = useGetProductsQuery({});
   

@@ -7,7 +7,7 @@ type Props = {
     icon:IconProp
 }
 
-const ActivitiesItem = ({title, text, icon}: Props) => {
+export const ActivitiesItem:React.FC<Props> = ({title, text, icon}) => {
     return (
         <div className='activities__content-item'>
             <FontAwesomeIcon className='activities__item-img' icon={icon} />
@@ -18,5 +18,3 @@ const ActivitiesItem = ({title, text, icon}: Props) => {
         </div>
     )
 }
-
-export default ActivitiesItem

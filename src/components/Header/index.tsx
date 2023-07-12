@@ -1,18 +1,18 @@
 import { faBagShopping, faUser, faHeart, faPhone, faEnvelope, faLocationDot, faTruck, faBars } from "@fortawesome/free-solid-svg-icons";
-import { setIsActive } from "../../store/cartSlice";
+import { setIsActive } from "store/slices/cartSlice";
 import { Link } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux";
-import { useAuth } from "../../hooks/useAuth";
+import { useAppDispatch, useAppSelector } from "hooks/redux";
+import { useAuth } from "hooks/useAuth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faArrowRight } from "@fortawesome/free-solid-svg-icons"
 import { useState, useCallback, ChangeEvent} from 'react'
 import { useNavigate } from "react-router-dom";
-import { IProduct } from "../../types/types";
-import { setFilterInput, setFilteredItems } from "../../store/headerSlice";
+import { IProduct } from "types/types";
+import { setFilterInput, setFilteredItems } from "store/slices/headerSlice";
 import { debounce } from 'lodash'
 import { HeaderMenu } from "./HeaderMenu";
 import { MenuDrawer } from "./MenuDrawer";
-import { useGetProductsQuery } from "../../store/api/products.api";
+import { useGetProductsQuery } from "store/api/products.api";
 
 
 

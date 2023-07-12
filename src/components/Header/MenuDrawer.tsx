@@ -3,7 +3,7 @@ import { faFacebook, faInstagram, faTumblr, faTwitter } from "@fortawesome/free-
 import { faArrowLeft, faClose, faArrowRight, faUser } from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useAuth } from '../../hooks/useAuth';
+import { useAuth } from 'hooks/useAuth';
 
 type Props = {
     menuActive: boolean,
@@ -11,7 +11,7 @@ type Props = {
 }
 
 
-export const MenuDrawer = ({ menuActive, setMenuActive }: Props) => {
+export const MenuDrawer:React.FC<Props> = ({ menuActive, setMenuActive }) => {
     const { isAuth } = useAuth()
     const [shopActive, setShopActive] = useState<boolean>(false)
     const [pagesActive, setPagesActive] = useState<boolean>(false)

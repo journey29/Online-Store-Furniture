@@ -15,12 +15,13 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    setCartItems(state, action: PayloadAction<{title:string, img:string, price:number, inputValue:number}>) {
+    setCartItems(state, action: PayloadAction<{title:string, img:string, price:number, inputValue:number, info:string}>) {
         const newItem = {
             title: action.payload.title,
             img: action.payload.img,
             price: action.payload.price,
-            inputValue: action.payload.inputValue
+            inputValue: action.payload.inputValue,
+            info:action.payload.info
         };
         const repeatedItem = state.cartItems.find((item) => item.title === newItem.title);
         if (!repeatedItem) {

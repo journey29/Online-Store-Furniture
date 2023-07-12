@@ -1,10 +1,10 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import headerSlice from "./headerSlice";
-import userSlice from "./userSlice";
-import cartSlice from "./cartSlice";
-import wishlistSlice from "./wishlistSlice";
+import headerSlice from "./slices/headerSlice";
+import userSlice from "./slices/userSlice";
+import cartSlice from "./slices/cartSlice";
+import wishlistSlice from "./slices/wishlistSlice";
 import { api } from "./api/api";
 
 const rootReducer = combineReducers({

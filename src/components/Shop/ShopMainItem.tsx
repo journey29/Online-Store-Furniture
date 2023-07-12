@@ -1,21 +1,21 @@
 import { useState } from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCartShopping, faHeart, faEye } from "@fortawesome/free-solid-svg-icons"
-import { IWishItem, ICart, IProduct } from "../../types/types"
-import { useAppSelector, useAppDispatch } from "../../hooks/redux"
-import { setWishListItems} from "../../store/wishlistSlice"
-import { setCartItems } from "../../store/cartSlice"
+import { IWishItem, ICart, IProduct } from "types/types"
+import { useAppSelector, useAppDispatch } from "hooks/redux"
+import { setWishListItems} from "store/slices/wishlistSlice"
+import { setCartItems } from "store/slices/cartSlice"
 import { Link } from "react-router-dom"
-import { ProductPopup } from "../ProductPopup"
-import EmptyHeart from '../../assets/icons/empty-heart.svg'
-import EmptyCart from '../../assets/icons/empty-cart.svg'
+import { ProductPopup } from "components/ProductPopup"
+import EmptyHeart from 'assets/icons/empty-heart.svg'
+import EmptyCart from 'assets/icons/empty-cart.svg'
 
 type Props = {
     productView: string,
     item: IProduct
 }
 
-export const ShopMainItem = ({ productView, item }: Props) => {
+export const ShopMainItem:React.FC<Props> = ({ productView, item }) => {
     const { cartItems } = useAppSelector(state => state.cart);
     const { wishListItems } = useAppSelector(state => state.wishlist);
     const dispatch = useAppDispatch();
@@ -32,7 +32,7 @@ export const ShopMainItem = ({ productView, item }: Props) => {
                     <p className='shop__item-price'>${item.price}.00</p>
                 </div>
                 <div className='shop__item-buttons'>
-                    <button className="shop__item-btn" onClick={() => setItemsInCart({title:item.title, price:item.price, img:item.imageUrl, inputValue:1})}>
+                    <button className="shop__item-btn" onClick={() => setItemsInCart({title:item.title, price:item.price, img:item.imageUrl, inputValue:1, info:item.info})}>
                         {cartItems.some((cartItem: ICart) => cartItem.title === item.title) ? (
                             <FontAwesomeIcon style={{ width: "20px", height: "20px" }} className="shop__btn-img" icon={faCartShopping} />
                         ) : (

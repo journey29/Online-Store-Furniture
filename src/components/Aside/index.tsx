@@ -1,20 +1,8 @@
-import AsideItem from "./AsideItem";
+import { AsideItem } from "./AsideItem";
 import { AsideSlider } from "./AsideSlider";
+import { asideItems } from "./aside.data";
 
-const asideItems = {
-    category: {
-        elegant: {
-            title: 'Elegant Styles',
-            listItems: ['Table linean', 'Kitchen tools', 'Sausage', 'Pindia', 'Royaloak', 'Ebee']
-        },
-        luxury: {
-            title: 'Luxury Collection',
-            listItems: ['Table linean', 'Kitchen tools', 'Sausage', 'Pindia', 'Royaloak', 'Ebee']
-        }
-    }
-}
-
-export const Aside = () => {
+export const Aside: React.FC = () => {
     return (
         <aside className='sidebar'>
             <div className="sidebar__list">
@@ -23,7 +11,7 @@ export const Aside = () => {
                 )}
                 <div className="sidebar__slider">
                     <h3 className='sidebar__item-title'>Best Sellers</h3>
-                    <AsideSlider/>
+                    <AsideSlider />
                 </div>
             </div>
         </aside>

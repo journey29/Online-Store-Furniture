@@ -1,4 +1,4 @@
-import TablesItem from "./TablesItem"
+import {TablesItem} from "./TablesItem"
 
 export const Tables:React.FC = () => {
     return (

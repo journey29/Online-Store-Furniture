@@ -1,19 +1,19 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping, faHeart, faEye } from '@fortawesome/free-solid-svg-icons';
-import EmptyHeart from '../../assets/icons/empty-heart.svg'
-import EmptyCart from '../../assets/icons/empty-cart.svg'
-import { ICart, IProduct, IWishItem } from '../../types/types';
-import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { setWishListItems} from '../../store/wishlistSlice';
-import { setCartItems } from '../../store/cartSlice';
+import EmptyHeart from 'assets/icons/empty-heart.svg'
+import EmptyCart from 'assets/icons/empty-cart.svg'
+import { ICart, IProduct, IWishItem } from 'types/types';
+import { useAppDispatch, useAppSelector } from 'hooks/redux';
+import { setWishListItems} from 'store/slices/wishlistSlice';
+import { setCartItems } from 'store/slices/cartSlice';
 import { useState } from 'react'
-import { ProductPopup } from '../ProductPopup';
+import { ProductPopup } from 'components/ProductPopup';
 
 type Props = {
     item: IProduct
 }
 
-export const SearchItem = ({ item }: Props) => {
+export const SearchItem:React.FC<Props> = ({ item }) => {
     const { wishListItems } = useAppSelector(state => state.wishlist);
     const { cartItems } = useAppSelector(state => state.cart);
     const dispatch = useAppDispatch();
@@ -30,7 +30,7 @@ export const SearchItem = ({ item }: Props) => {
                     <p className="search__item-price">${item.price}.00</p>
                 </div>
                 <div className="search__item-buttons">
-                    <button className="search__item-btn" onClick={() => setItemsInCart({title:item.title, price:item.price, img:item.imageUrl, inputValue:1})}>
+                    <button className="search__item-btn" onClick={() => setItemsInCart({title:item.title, price:item.price, img:item.imageUrl, inputValue:1, info:item.info})}>
                         {cartItems.some((cartItem: ICart) => cartItem.title === item.title) ? (
                             <FontAwesomeIcon style={{ width: "20px", height: "20px" }} className="search__btn-img" icon={faCartShopping} />
                         ) : (

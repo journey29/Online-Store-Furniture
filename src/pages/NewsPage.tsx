@@ -1,14 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Header } from '../components/Header'
-import { Breadcrumbs } from '../components/Breadcrumbs'
-import { AsideNews } from '../components/News/AsideNews'
-import { NewsMain } from '../components/News/NewsMain'
-import { Loader } from '../components/Loader'
-import { INews } from '../types/types'
-import { Cart } from '../components/Cart'
-import { useGetNewsQuery } from '../store/api/products.api'
-import { Cookies } from '../components/Cookies'
-import { Footer } from '../components/Footer'
+import { INews } from 'types/types'
+import { useGetNewsQuery } from 'store/api/products.api'
+import {Cart, Header, Footer, Loader, Breadcrumbs, AsideNews, NewsMain} from './index'
 
 export const News: React.FC = () => {
     const [currentPage, setCurrentPage] = useState<number>(1);
@@ -22,25 +15,26 @@ export const News: React.FC = () => {
             console.error('Error:', error)
         }
     }, [currentPage, data])
-    
+
     return (
         <>
             {isLoading
                 ? <Loader />
                 : <>
                     <Header />
-                    <Cart />
-                    <Breadcrumbs previousPage='Home' currentPage='News' title='News' />
-                    <Cookies/>
-                    <div className='news'>
-                        <div className="container">
-                            <div className="news__content">
-                                <AsideNews />
-                                <NewsMain currentPage={currentPage} totalNews={totalNews} setCurrentPage={setCurrentPage} />
+                    <main>
+                        <Cart />
+                        <Breadcrumbs previousPage='Home' currentPage='News' title='News' />
+                        <div className='news'>
+                            <div className="container">
+                                <div className="news__content">
+                                    <AsideNews />
+                                    <NewsMain currentPage={currentPage} totalNews={totalNews} setCurrentPage={setCurrentPage} />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <Footer/>
+                    </main>
+                    <Footer />
                 </>
 
             }

@@ -1,15 +1,8 @@
 import { useParams } from 'react-router-dom'
-import { Header } from '../components/Header'
-import { Breadcrumbs } from '../components/Breadcrumbs'
-import { Footer } from '../components/Footer'
-import { ProductItem } from '../components/Product/ProductItem'
-import { Cart } from '../components/Cart'
-import { Aside } from '../components/Aside'
 import { useState, useEffect } from 'react';
-import { Loader } from '../components/Loader'
-import { IProduct } from '../types/types'
-import { Cookies } from '../components/Cookies'
-import { useGetProductsQuery } from '../store/api/products.api'
+import { IProduct } from 'types/types'
+import { useGetProductsQuery } from 'store/api/products.api'
+import {Cart, Header, Footer, Aside, ProductItem, Loader, Breadcrumbs} from './index'
 
 export const Product: React.FC = () => {
     const { id } = useParams();
@@ -31,17 +24,18 @@ export const Product: React.FC = () => {
                     ? <Loader />
                     : <>
                         < Header />
-                        <Breadcrumbs title='Product' previousPage='All' currentPage={id} />
-                        <Cart />
-                        <Cookies />
-                        <section className='product'>
-                            <div className="container">
-                                <div className="product__content">
-                                    <Aside />
-                                    <ProductItem product={product} />
+                        <main>
+                            <Breadcrumbs title='Product' previousPage='All' currentPage={id} />
+                            <Cart />
+                            <section className='product'>
+                                <div className="container">
+                                    <div className="product__content">
+                                        <Aside />
+                                        <ProductItem product={product} />
+                                    </div>
                                 </div>
-                            </div>
-                        </section>
+                            </section>
+                        </main>
                         <Footer />
                     </>
             }

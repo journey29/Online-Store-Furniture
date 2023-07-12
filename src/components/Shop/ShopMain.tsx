@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faClose, faSliders } from '@fortawesome/free-solid-svg-icons';
 import { faChevronRight, faBorderAll, faList } from '@fortawesome/free-solid-svg-icons';
-import { IProduct } from '../../types/types';
+import { IProduct } from 'types/types';
+import { useGetProductsQuery } from 'store/api/products.api';
+import { Aside } from 'components/Aside';
 import { ShopMainItem } from './ShopMainItem';
-import { useGetProductsQuery } from '../../store/api/products.api';
-import { Aside } from '../Aside';
 
 type Props = {
   setShopProduct: (state: IProduct[]) => void,
@@ -15,7 +15,7 @@ type Props = {
 }
 
 
-export const ShopMain = ({ setCurrentPage, setShopProduct, shopProduct, currentPage }: Props) => {
+export const ShopMain:React.FC<Props> = ({ setCurrentPage, setShopProduct, shopProduct, currentPage }) => {
   const [productView, setProductView] = useState<string>('grid');
   const [totalPages, setTotalPages] = useState<number>(1);
   const [selectedSortOption, setSelectedSortOption] = useState<string>('featured');

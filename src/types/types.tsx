@@ -3,6 +3,7 @@ export interface ICart {
   price: number,
   img: string,
   inputValue: number
+  info:string
 }
 
 export interface IWishItem {
@@ -28,6 +29,7 @@ export interface IAsideItems {
 export interface IProduct {
   title: string,
   price: number,
+  info:string,
   imageUrl: string,
   id: string,
   rating: number,

@@ -1,6 +1,6 @@
 import { Slider } from "../Slider"
 
-export const Main = () => {
+export const Main:React.FC = () => {
     return (
         <section>
             <div className="container">

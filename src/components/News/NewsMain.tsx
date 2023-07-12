@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight, faChevronLeft, faSliders, faClose } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
-import { INews } from '../../types/types'
-import { useGetNewsQuery } from '../../store/api/products.api'
+import { INews } from 'types/types'
+import { useGetNewsQuery } from 'store/api/products.api'
 import { AsideNews } from './AsideNews'
 
 type Props = {
@@ -12,7 +12,7 @@ type Props = {
   setCurrentPage: (state: number) => void
 }
 
-export const NewsMain = ({ setCurrentPage, currentPage, totalNews }: Props) => {
+export const NewsMain:React.FC<Props> = ({ setCurrentPage, currentPage, totalNews }) => {
   const { data, error } = useGetNewsQuery({})
   const [news, setNews] = useState<INews[]>([])
   const [totalPages, setTotalPages] = useState<number>(1);

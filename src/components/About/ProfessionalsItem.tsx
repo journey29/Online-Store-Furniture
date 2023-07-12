@@ -8,7 +8,7 @@ type Props = {
     img: string
 }
 
-export const ProfessionalsItem = ({ img, name, job, social }: Props) => {
+export const ProfessionalsItem:React.FC<Props> = ({ img, name, job, social }) => {
     return (
         <li className="professionals__item">
             <img className='professionals__item-img' src={img} alt="img" />

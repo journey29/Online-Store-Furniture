@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
-import { useAppDispatch, useAppSelector } from '../../hooks/redux'
-import { removeWishListItem } from '../../store/wishlistSlice'
+import { useAppDispatch, useAppSelector } from 'hooks/redux'
+import { removeWishListItem } from 'store/slices/wishlistSlice'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClose } from '@fortawesome/free-solid-svg-icons'
-import { useAuth } from '../../hooks/useAuth'
+import { useAuth } from 'hooks/useAuth'
 
 export const WishList: React.FC = () => {
     const { wishListItems } = useAppSelector(state => state.wishlist)

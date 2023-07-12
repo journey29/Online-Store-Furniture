@@ -11,7 +11,7 @@ type Props = {
     error: string
 }
 
-export const Form = ({ title, button, link, linkText, text, authFunction, error }: Props) => {
+export const Form:React.FC<Props> = ({ title, button, link, linkText, text, authFunction, error }) => {
     const [email, setEmail] = useState<string>('');
     const [pass, setPass] = useState<string>('');
 
