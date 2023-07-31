@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight, faChevronLeft, faSliders, faClose } from '@fortawesome/free-solid-svg-icons'
-import { Link } from 'react-router-dom'
 import { INews } from 'types/types'
 import { useGetNewsQuery } from 'store/api/products.api'
 import { AsideNews } from './AsideNews'
+import { NewsMainItem } from './NewsMainItem'
 
 type Props = {
   currentPage: number,
@@ -12,7 +12,7 @@ type Props = {
   setCurrentPage: (state: number) => void
 }
 
-export const NewsMain:React.FC<Props> = ({ setCurrentPage, currentPage, totalNews }) => {
+export const NewsMain: React.FC<Props> = ({ setCurrentPage, currentPage, totalNews }) => {
   const { data, error } = useGetNewsQuery({})
   const [news, setNews] = useState<INews[]>([])
   const [totalPages, setTotalPages] = useState<number>(1);
@@ -48,26 +48,15 @@ export const NewsMain:React.FC<Props> = ({ setCurrentPage, currentPage, totalNew
           <p className='news-drawer__button-text'>Filter</p>
         </div>
         <div className={filterDrawerActive ? 'news-drawer__content active' : 'news-drawer__content'}>
-          <button className='news-drawer__close' onClick={()=>setFilterDrawerActive(false)}>
-            <FontAwesomeIcon style={{height:"24px"}} icon={faClose} />
+          <button className='news-drawer__close' onClick={() => setFilterDrawerActive(false)}>
+            <FontAwesomeIcon style={{ height: "24px" }} icon={faClose} />
           </button>
           <AsideNews />
         </div>
       </div>
       <div className='news__main-list'>
         {news.map(item =>
-          <div className='news__main-item' key={item.id}>
-            <img className='news__item-img' src={item.image} alt="img" />
-            <div className='news__item-content'>
-              <div className='news__content-info'>
-                <span className='news__content-author'>{item.author}</span> |
-                <span className='news__content-date'>{item.date}</span>
-              </div>
-              <h4 className='news__content-title'>{item.title}</h4>
-              <p className='news__content-text'>{item.description}</p>
-              <Link className='news__content-link' to={`/news/post/${item.title.replaceAll(' ', '-').toLowerCase()}`}>Read More</Link>
-            </div>
-          </div>
+          <NewsMainItem item={item} />
         )}
       </div>
       {news.length > 6

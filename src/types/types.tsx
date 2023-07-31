@@ -80,3 +80,8 @@ export interface IComments {
   date: string,
   text: string
 }
+
+export interface IOptions {
+  title:string,
+  value:string
+}

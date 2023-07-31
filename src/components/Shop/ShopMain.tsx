@@ -6,6 +6,8 @@ import { IProduct } from 'types/types';
 import { useGetProductsQuery } from 'store/api/products.api';
 import { Aside } from 'components/Aside';
 import { ShopMainItem } from './ShopMainItem';
+import { Sort } from 'components/UI/Sort';
+import { options } from './shop.data';
 
 type Props = {
   setShopProduct: (state: IProduct[]) => void,
@@ -15,7 +17,7 @@ type Props = {
 }
 
 
-export const ShopMain:React.FC<Props> = ({ setCurrentPage, setShopProduct, shopProduct, currentPage }) => {
+export const ShopMain: React.FC<Props> = ({ setCurrentPage, setShopProduct, shopProduct, currentPage }) => {
   const [productView, setProductView] = useState<string>('grid');
   const [totalPages, setTotalPages] = useState<number>(1);
   const [selectedSortOption, setSelectedSortOption] = useState<string>('featured');
@@ -46,27 +48,7 @@ export const ShopMain:React.FC<Props> = ({ setCurrentPage, setShopProduct, shopP
     }
   }, [selectedSortOption]);
 
-  const reckonTotalPages = (): void => {
-    setTotalPages(Math.ceil(totalProducts.length / 6))
-  }
-
-  const paginationBack = (page: number): void => {
-    if (currentPage > 1) {
-      setCurrentPage(page)
-    }
-  }
-
-  const paginationForward = (page: number): void => {
-    if (currentPage < totalPages) {
-      setCurrentPage(page)
-    }
-  }
-
-  const topBtnHandler = (view: string, active: number): void => {
-    setProductView(view)
-    setTopBtnIsActive(active)
-  }
-
+  
   const sortProducts = (products: IProduct[], sortOption: string): IProduct[] => {
     let sortedProducts: IProduct[] = [];
     switch (sortOption) {
@@ -94,6 +76,27 @@ export const ShopMain:React.FC<Props> = ({ setCurrentPage, setShopProduct, shopP
     return sortedProducts;
   };
 
+  const reckonTotalPages = (): void => {
+    setTotalPages(Math.ceil(totalProducts.length / 6))
+  }
+
+  const paginationBack = (page: number): void => {
+    if (currentPage > 1) {
+      setCurrentPage(page)
+    }
+  }
+
+  const paginationForward = (page: number): void => {
+    if (currentPage < totalPages) {
+      setCurrentPage(page)
+    }
+  }
+
+  const topBtnHandler = (view: string, active: number): void => {
+    setProductView(view)
+    setTopBtnIsActive(active)
+  }
+
   return (
     <>
       <div className='shop__main'>
@@ -108,14 +111,7 @@ export const ShopMain:React.FC<Props> = ({ setCurrentPage, setShopProduct, shopP
           </div>
           <div className='shop__top-sort'>
             <p className='shop__top-text'>Sort By</p>
-            <select className='shop__top-select' value={selectedSortOption} onChange={(e) => setSelectedSortOption(e.target.value)}>
-              <option className='shop__top-option' value="featured">Featured</option>
-              <option className='shop__top-option' value="sales">Best selling</option>
-              <option className='shop__top-option' value="price asc">Price, low-high</option>
-              <option className='shop__top-option' value="price desc">Price, high-low</option>
-              <option className='shop__top-option' value="date asc">Date, old-new</option>
-              <option className='shop__top-option' value="date desc">Date, new-old</option>
-            </select>
+            <Sort options={options} selectedOption={selectedSortOption} setSelectedOption={setSelectedSortOption}/>
           </div>
         </div>
         <div className='shop-drawer'>

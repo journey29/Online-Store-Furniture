@@ -4,8 +4,9 @@ interface ICookies {
     setItem: (item: string, value: string) => void;
 }
 
-export const Cookies:React.FC = () => {
-    const [hidden, setHidden] = useState<boolean>(false)
+export const Cookies: React.FC = () => {
+    const [hidden, setHidden] = useState<boolean>(false);
+
     const consentPropertyName = 'furni_consent';
     const cookieStorage: ICookies = {
         getItem: (item) => {
@@ -21,17 +22,23 @@ export const Cookies:React.FC = () => {
         },
     };
     const storageType = cookieStorage;
+
     const shouldShowPopup = () => !storageType.getItem(consentPropertyName);
+
     const saveToStorage = (consentPropertyName: string) => storageType.setItem(consentPropertyName, 'true');
+
     const declineToStorage = (consentPropertyName: string) => storageType.setItem(consentPropertyName, 'false');
+
     const acceptFn = () => {
         saveToStorage(consentPropertyName);
         setHidden(true)
     }
+
     const declineFn = () => {
         declineToStorage(consentPropertyName);
         setHidden(true)
     }
+    
     if (shouldShowPopup()) {
         setTimeout(() => {
             setHidden(false)

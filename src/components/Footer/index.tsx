@@ -32,7 +32,6 @@ export const Footer: React.FC = () => {
                                 <FontAwesomeIcon icon={faTumblr} />
                             </a>
                         </li>
-
                     </ul>
                 </li>
                 <li className='footer__info-item'>

@@ -1,14 +1,10 @@
 import { Link } from 'react-router-dom'
-import { useAppDispatch, useAppSelector } from 'hooks/redux'
-import { removeWishListItem } from 'store/slices/wishlistSlice'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faClose } from '@fortawesome/free-solid-svg-icons'
+import { useAppSelector } from 'hooks/redux'
 import { useAuth } from 'hooks/useAuth'
+import { WishListItem } from './WishListItem'
 
 export const WishList: React.FC = () => {
     const { wishListItems } = useAppSelector(state => state.wishlist)
-    const dispatch = useAppDispatch();
-    const deleteWishListItem = (state: string) => dispatch(removeWishListItem(state))
     const { isAuth } = useAuth()
 
     return (
@@ -27,25 +23,7 @@ export const WishList: React.FC = () => {
                         </thead>
                         <tbody className='wishlist__items-list'>
                             {wishListItems.map(item =>
-                                    <tr className='wishlist__item' key={item.title}>
-                                        <td className='wishlist__item-column'>
-                                            <img className='wishlist__item-img' src={item.img} alt="img" />
-                                        </td>
-                                        <td className='wishlist__item-column'>
-                                            <a className='wishlist__item-title' href="">{item.title}</a>
-                                        </td>
-                                        <td className='wishlist__item-column'>
-                                            <span className='wishlist__item-price'>${item.price}.00</span>
-                                        </td>
-                                        <td className='wishlist__item-column'>
-                                            <Link className='wishlist__item-options' to={`/product/${item.title.replaceAll(' ', '-').toLowerCase()}`}>Select Options</Link>
-                                        </td>
-                                        <td className='wishlist__item-column'>
-                                            <button className='wishlist__item-btn'>
-                                                <FontAwesomeIcon style={{ height: "25px" }} className='wishlist__item-close' icon={faClose} onClick={() => deleteWishListItem(item.title)} />
-                                            </button>
-                                        </td>
-                                    </tr>
+                                <WishListItem item={item} />
                             )}
                         </tbody>
                     </table>

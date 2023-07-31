@@ -2,9 +2,9 @@ import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import { IProduct } from 'types/types'
 import { useGetProductsQuery } from 'store/api/products.api'
-import {Cart, Header, Footer, Aside, ProductItem, Loader, Breadcrumbs} from './index'
+import {Cart, Header, Footer, Loader, Breadcrumbs, Product} from './index'
 
-export const Product: React.FC = () => {
+export const ProductPage: React.FC = () => {
     const { id } = useParams();
     const [product, setProduct] = useState<IProduct[]>([]);
     const { data, isLoading, error } = useGetProductsQuery({ title: id?.replaceAll('-', ' ') })
@@ -27,14 +27,7 @@ export const Product: React.FC = () => {
                         <main>
                             <Breadcrumbs title='Product' previousPage='All' currentPage={id} />
                             <Cart />
-                            <section className='product'>
-                                <div className="container">
-                                    <div className="product__content">
-                                        <Aside />
-                                        <ProductItem product={product} />
-                                    </div>
-                                </div>
-                            </section>
+                            <Product product={product}/>
                         </main>
                         <Footer />
                     </>

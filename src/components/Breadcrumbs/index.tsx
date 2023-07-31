@@ -9,7 +9,6 @@ export const Breadcrumbs:React.FC<Props> = ({ title, currentPage, previousPage }
     currentPage = currentPage?.replaceAll('-', ' ')
     currentPage = bigFirst(currentPage)
     
-    
     return (
         <div className='breadcrumbs'>
             <div className="container">
